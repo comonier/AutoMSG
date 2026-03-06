@@ -1,0 +1,24 @@
+# ========================
+# Temporizador:
+# Utilize d para dias, h para horas, m para minutos, s para segundos
+# De quanto em quanto tempo voce gostaria de deixar o auto anuncio ativado?
+# Exemplo: 10m
+# Para mensagens em RGB utiliza os código Hexadecimais (#FFFFFF)
+# Link para o site: https://rgb.birdflop.com
+# Exemplo: #FF5555Mensagem
+# ========================
+Settings:
+  Interval: 10m
+  Language: pt
+  EnableSound: true
+  DiscordWebhook: ""
+
+# Placeholders: {player}, {online_players}, {max_players}
+# Sites de Votos:
+# - https://minecraft-mp.com
+# - https://topg.org
+
+Announcements:
+  - "&#00FBFF[AutoMSG] &fVote em nosso servidor: &bhttps://minecraft-mp.com"
+  - "&#FF5555[AutoMSG] &fEntre no Discord: &dhttps://discord.gg"
+  - "&#55FF55[AutoMSG] &fOla &e{player}&f, existem &a{online_players}&f jogadores online!"

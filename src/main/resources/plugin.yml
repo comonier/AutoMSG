@@ -1,0 +1,8 @@
+name: AutoMSG
+version: 1.0
+main: com.comonier.automsg.AutoMSG
+api-version: 1.21
+commands:
+  am:
+    description: Main command for AutoMSG
+    permission: automsg.admin

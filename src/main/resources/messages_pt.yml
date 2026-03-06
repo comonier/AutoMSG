@@ -1,0 +1,8 @@
+prefix: "&8[&bAutoMSG&8] "
+reload: "&aPlugin recarregado com sucesso!"
+no_permission: "&cVocê não tem permissão."
+usage: "&eUse: /am [reload|help|add|list|remove]"
+add_success: "&aAnúncio adicionado!"
+remove_success: "&aAnúncio {id} removido!"
+invalid_id: "&cID inválido."
+list_header: "&b--- Lista de Anúncios ---"
