@@ -21,6 +21,8 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
             plugin.loadLang();
             plugin.startTimer();
             s.sendMessage(plugin.getMsg("reload"));
+        } else if (sub.equals("test")) {
+            plugin.broadcastCurrent();
         } else if (sub.equals("help")) {
             s.sendMessage(plugin.getMsg("usage"));
         } else if (sub.equals("list")) {
@@ -59,7 +61,7 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
     }
     @Override
     public List<String> onTabComplete(CommandSender s, Command cmd, String alias, String[] args) {
-        if (args.length == 1) return Arrays.asList("reload", "help", "add", "list", "remove");
+        if (args.length == 1) return Arrays.asList("reload", "test", "help", "add", "list", "remove");
         return new ArrayList<>();
     }
 }

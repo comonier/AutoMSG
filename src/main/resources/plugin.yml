@@ -6,3 +6,4 @@ commands:
   am:
     description: Main command for AutoMSG
     permission: automsg.admin
+    usage: /am [reload|test|help|add|list|remove]

@@ -3,6 +3,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
+import org.bukkit.entity.Player;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
@@ -50,24 +51,27 @@ public class AutoMSG extends JavaPlugin {
         Bukkit.getScheduler().cancelTasks(this);
         long ticks = parseTime(getConfig().getString("Settings.Interval"));
         Bukkit.getScheduler().runTaskTimer(this, () -> {
-            List<String> msgs = getConfig().getStringList("Announcements");
-            if (msgs.isEmpty()) return;
-            if (taskIdx >= msgs.size()) taskIdx = 0;
-            String raw = msgs.get(taskIdx);
-            String plainText = ChatColor.stripColor(color(raw)).replace("{player}", "Global").replace("{online_players}", String.valueOf(Bukkit.getOnlinePlayers().size()));
-            sendToDiscord(plainText);
-            boolean playSound = getConfig().getBoolean("Settings.EnableSound");
-            Bukkit.getOnlinePlayers().forEach(player -> {
-                String m = raw.replace("{player}", player.getName())
-                             .replace("{online_players}", String.valueOf(Bukkit.getOnlinePlayers().size()))
-                             .replace("{max_players}", String.valueOf(Bukkit.getMaxPlayers()));
-                player.sendMessage(color(m));
-                if (playSound) player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES, 1f, 1f);
-            });
-            taskIdx++;
+            broadcastCurrent();
         }, ticks, ticks);
     }
-    private void sendToDiscord(String content) {
+    public void broadcastCurrent() {
+        List<String> msgs = getConfig().getStringList("Announcements");
+        if (msgs.isEmpty()) return;
+        if (taskIdx >= msgs.size()) taskIdx = 0;
+        String raw = msgs.get(taskIdx);
+        String plainText = ChatColor.stripColor(color(raw)).replace("{player}", "Global").replace("{online_players}", String.valueOf(Bukkit.getOnlinePlayers().size()));
+        sendToDiscord(plainText);
+        boolean playSound = getConfig().getBoolean("Settings.EnableSound");
+        Bukkit.getOnlinePlayers().forEach(player -> {
+            String m = raw.replace("{player}", player.getName())
+                         .replace("{online_players}", String.valueOf(Bukkit.getOnlinePlayers().size()))
+                         .replace("{max_players}", String.valueOf(Bukkit.getMaxPlayers()));
+            player.sendMessage(color(m));
+            if (playSound) player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES, 1f, 1f);
+        });
+        taskIdx++;
+    }
+    public void sendToDiscord(String content) {
         String url = getConfig().getString("Settings.DiscordWebhook");
         if (url == null || url.isEmpty() || url.contains("http") == false) return;
         Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
