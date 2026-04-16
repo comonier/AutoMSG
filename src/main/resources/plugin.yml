@@ -1,9 +1,13 @@
 name: AutoMSG
-version: 1.0
+version: ${project.version}
 main: com.comonier.automsg.AutoMSG
-api-version: 1.21
+api-version: 1.19
 commands:
   am:
-    description: Main command for AutoMSG
+    description: Professional Announcement System
     permission: automsg.admin
-    usage: /am [reload|test|help|add|list|remove]
+    usage: /am [reload|list|add|remove] [category] [value]
+permissions:
+  automsg.admin:
+    description: Allows full access to AutoMSG management.
+    default: op

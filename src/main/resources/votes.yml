@@ -1,0 +1,28 @@
+# ======================================================
+# AutoMSG Category Configuration
+# 
+# INTERVAL:
+# Set the time between messages using 's' (seconds), 'm' (minutes), 'h' (hours), 'd' (days).
+# Example: 30s, 10m, 2h, 1d
+# 
+# SOUND:
+# SoundName: Use official Bukkit Sound names (e.g., ENTITY_VILLAGER_YES, BLOCK_NOTE_BLOCK_PLING)
+# SoundVolume: 0.0 to 2.0
+# SoundPitch: 0.0 to 2.0
+# 
+# FORMATTING:
+# Use HEX colors like #FF5555 for modern chat colors.
+# Available Placeholders: {player}, {online_players}
+# ======================================================
+Settings:
+  Enabled: true
+  Interval: 10m
+  Prefix: "&8[&aVote&8] &f"
+  EnableSound: true
+  SoundName: "ENTITY_PLAYER_LEVELUP"
+  SoundVolume: 1.0
+  SoundPitch: 1.0
+  DiscordWebhook: ""
+Announcements:
+  - "vote link 1"
+  - "vote link 2"

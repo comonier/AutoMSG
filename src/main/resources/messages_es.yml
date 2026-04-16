@@ -1,0 +1,8 @@
+prefix: "&8[&bAutoMSG&8] "
+reload: "&a¡Plugin y categorías recargados con éxito!"
+no_permission: "&cNo tienes permiso para usar este comando."
+usage: "&eUso: /am [reload|list|add|remove] [categoría] [valor]"
+add_success: "&a¡Anuncio añadido correctamente a la categoría!"
+remove_success: "&aEl anuncio con ID {id} ha sido eliminado."
+invalid_id: "&cID o categoría no válidos."
+list_header: "&b--- Lista de anuncios: {category} ---"
